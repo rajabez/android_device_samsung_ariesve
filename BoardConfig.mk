@@ -140,7 +140,6 @@ BOARD_HAS_SDCARD_INTERNAL := true
 BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/ariesve/recovery/recovery_keys.c
 BOARD_CUSTOM_GRAPHICS := ../../../device/samsung/ariesve/recovery/graphics.c
 TARGET_RECOVERY_INITRC := device/samsung/ariesve/init.recovery.rc
-BOARD_UMS_LUNFILE := /sys/devices/platform/usb_mass_storage/lun0/file
 # End recovery stuff
 
 TARGET_PREBUILT_KERNEL := device/samsung/ariesve/prebuilt/zImage

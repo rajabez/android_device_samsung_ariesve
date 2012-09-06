@@ -270,6 +270,12 @@ service geomagneticd /system/bin/geomagneticd
     user compass
     group system input
 
+service compcache /system/bin/handle_compcache
+    class main
+    user root
+    group root
+    oneshot
+
 service playlpm /system/bin/playlpm
     class charger
     user root

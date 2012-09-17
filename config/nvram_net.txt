@@ -29,7 +29,7 @@ rxpo2g=2
 tri2g=98
 
 # country code
-ccode=EU
+ccode=ALL
 cctl=0x0
 cckdigfilttype=6
 ofdmdigfilttype=1

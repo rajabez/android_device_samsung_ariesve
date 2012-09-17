@@ -37,33 +37,33 @@ on boot
     chmod 0660 /sys/class/sec/pm/power_down
     chown root system /sys/class/sec/pm/power_down
 
-    # accelerometer
+    # geomagnetic
     chown system input /sys/class/input/input4/enable
     chown system input /sys/class/input/input4/delay
-    chown system input /sys/class/input/input4/position
-    chown system input /sys/class/input/input4/threshold
-    chown system input /sys/class/input/input4/wake
+    chown system input /sys/class/input/input4/filter_enable
+    chown system input /sys/class/input/input4/filter_len
     chown system input /sys/class/input/input4/data
-    chown system input /sys/class/input/input4/calibration
+    chown system input /sys/class/input/input4/status
+    chown system input /sys/class/input/input4/wake
+    chown system input /sys/class/input/input4/position
 
-    # geomagnetic
+    # geomagnetic raw
     chown system input /sys/class/input/input5/enable
     chown system input /sys/class/input/input5/delay
-    chown system input /sys/class/input/input5/filter_enable
-    chown system input /sys/class/input/input5/filter_len
     chown system input /sys/class/input/input5/data
-    chown system input /sys/class/input/input5/status
-    chown system input /sys/class/input/input5/wake
-    chown system input /sys/class/input/input5/position
-    
-    # geomagnetic raw
+    chown system input /sys/class/input/input5/threshold
+    chown system input /sys/class/input/input5/distortion
+    chown system input /sys/class/input/input5/shape
+    chown compass input /sys/class/input/input5/offsets
+
+    # accelerometer
     chown system input /sys/class/input/input6/enable
     chown system input /sys/class/input/input6/delay
-    chown system input /sys/class/input/input6/data
+    chown system input /sys/class/input/input6/position
     chown system input /sys/class/input/input6/threshold
-    chown system input /sys/class/input/input6/distortion
-    chown system input /sys/class/input/input6/shape
-    chown compass input /sys/class/input/input6/offsets
+    chown system input /sys/class/input/input6/wake
+    chown system input /sys/class/input/input6/data
+    chown system input /sys/class/input/input6/calibration
 
     # orientation
     chown system input /sys/class/input/input7/enable
@@ -87,8 +87,8 @@ on boot
     chown system input /sys/class/input/input9/status
     chown system input /sys/class/input/input9/testmode
 
-    write /sys/class/input/input6/threshold 1
-    write /sys/class/input/input6/distortion " 15 15 15"
+    write /sys/class/input/input5/threshold 1
+    write /sys/class/input/input5/distortion " 15 15 15"
 
     chown system system /sys/devices/platform/msm_sdcc.1/polling
     chown system system /sys/devices/platform/msm_sdcc.2/polling
@@ -286,3 +286,9 @@ on property:init.svc.ril-daemon=running
 
 on property:init.svc.bluetoothd=running
     write /sys/devices/virtual/bluetooth/hci0/idle_timeout 7000
+
+on property:init.svc.playlpm=running
+    chmod 666 /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+    chmod 666 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor powersave
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 122880

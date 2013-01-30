@@ -120,7 +120,8 @@ PRODUCT_PACKAGES += \
     gps.msm7x30 \
     audio.primary.msm7x30 \
     audio_policy.msm7x30 \
-    audio.a2dp.default
+    audio.a2dp.default \
+    lights.msm7x30
 
 PRODUCT_PACKAGES += \
     libmm-omxcore \
@@ -143,7 +144,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     hciconfig \
     hcitool \
-    libaudioutils
+    libaudioutils \
+    AriesParts
 
 # For userdebug builds
 ADDITIONAL_DEFAULT_PROPERTIES += \

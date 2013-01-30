@@ -277,9 +277,6 @@ service lpmkey /system/bin/charging_mode
     user root
     oneshot
 
-on property:sys.radio.shutdown=true
-    write /sys/devices/platform/rs300000a7.65536/force_sync 1
-
 on property:init.svc.ril-daemon=running
     start get_macaddrs
 

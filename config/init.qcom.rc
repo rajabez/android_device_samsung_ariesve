@@ -152,6 +152,9 @@ on boot
     chown radio system sys/devices/platform/android_usb/tethering
     chown radio system sys/devices/platform/android_usb/UsbMenuSel
     chown radio system sys/devices/virtual/graphics/fb1/hpd
+    chown system system sys/class/misc/notification/led
+    chown system system sys/class/misc/notification/bl_timeout
+    chown system system sys/class/misc/notification/wakelock
 
     # for silent reset
     chown system system /proc/dump_enable

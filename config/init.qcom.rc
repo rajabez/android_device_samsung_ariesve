@@ -8,8 +8,6 @@ on init
     mkdir /mnt/external_sd 0000 system system
     symlink /mnt/external_sd /external_sd
 
-    insmod /lib/modules/bthid.ko
-
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
@@ -33,9 +31,19 @@ on boot
     chown bluetooth bluetooth /sys/devices/platform/msm_serial_hs.0/clock
     chmod 0660 /sys/devices/platform/msm_serial_hs.0/clock
 
+    chmod 0444 /sys/devices/platform/msm_hsusb/gadget/usb_state
+
     # Force Power Down
     chmod 0660 /sys/class/sec/pm/power_down
     chown root system /sys/class/sec/pm/power_down
+
+    # To prevent out of order acknowledgements from making
+    # connection tracking to treat them as not belonging to
+    # the connection they belong to.
+    # Otherwise, a weird issue happens in which some long
+    # connections on high-throughput links get dropped when
+    # an ack packet comes out of order
+    write /proc/sys/net/netfilter/nf_conntrack_tcp_be_liberal 1
 
     # geomagnetic
     chown system input /sys/class/input/input4/enable
@@ -111,21 +119,6 @@ on boot
     chown system audio /sys/devices/virtual/misc/amp/gain_all
     chown system audio /sys/devices/virtual/misc/amp/save
 
-    # Codec Tun (QTR)
-    chown system audio /sys/class/marimba/marimba_gain/codec_tune_enable
-    chown system audio /sys/class/marimba/marimba_gain/analog_headset_rx_left_gain
-    chown system audio /sys/class/marimba/marimba_gain/analog_headset_rx_right_gain
-    chown system audio /sys/class/marimba/marimba_gain/digital_rx_left_gain
-    chown system audio /sys/class/marimba/marimba_gain/digital_rx_right_gain
-    chown system audio /sys/class/marimba/marimba_gain/digital_tx_left_gain
-    chown system audio /sys/class/marimba/marimba_gain/digital_tx_right_gain
-    chown system audio /sys/class/marimba/marimba_gain/analog_tx_left_gain
-    chown system audio /sys/class/marimba/marimba_gain/analog_tx_right_gain
-    chown system audio /sys/class/marimba/marimba_gain/auxpga_left_gain
-    chown system audio /sys/class/marimba/marimba_gain/auxpga_right_gain
-    chown system audio /sys/devices/virtual/misc/amp/gain_all
-    chown system audio /sys/class/marimba/marimba_gain/save
-
     # Remove write permissions to video related nodes
     chmod 0664 /sys/devices/virtual/graphics/fb1/hpd
     chmod 0664 /sys/devices/virtual/graphics/fb1/video_mode
@@ -149,8 +142,6 @@ on boot
     chown radio system sys/devices/virtual/sec/switch/usb_sel
     chown radio system sys/devices/platform/msm_sdcc.2/polling
     chown radio system sys/devices/platform/msm_sdcc.1/polling
-    chown radio system sys/devices/platform/android_usb/tethering
-    chown radio system sys/devices/platform/android_usb/UsbMenuSel
     chown radio system sys/devices/virtual/graphics/fb1/hpd
     chown system system sys/class/misc/notification/led
     chown system system sys/class/misc/notification/bl_timeout
@@ -162,17 +153,12 @@ on boot
     chown system system /proc/nosim_handler
     copy /data/dump_enable /proc/dump_enable
 
-    # disable performance capturing
-    write /sys/devices/platform/msm_sdcc.1/perf 0
-    write /sys/devices/platform/msm_sdcc.2/perf 0
-    write /sys/devices/platform/msm_sdcc.4/perf 0
-
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 245760
     write /sys/devices/system/cpu/cpufreq/ondemand/up_threshold 90
     write /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate 75000
-    chown system /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate
-    chown system /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor
-    chown system /sys/devices/system/cpu/cpufreq/ondemand/io_is_busy
+    chown system system /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate
+    chown system system /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor
+    chown system system /sys/devices/system/cpu/cpufreq/ondemand/io_is_busy
 
 on emmc-fs
     chmod 0666 /dev/block/mmcblk0p14

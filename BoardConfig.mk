@@ -121,8 +121,6 @@ TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 BOARD_VOLD_MAX_PARTITIONS := 28
 
-BOARD_MTP_DEVICE := "/dev/usb_mtp_gadget"
-
 # Begin recovery stuff
 #
 # Partition sizes must match your phone.
@@ -145,4 +143,4 @@ TARGET_RECOVERY_INITRC := device/samsung/ariesve/config/init.recovery.rc
 
 TARGET_PREBUILT_KERNEL := device/samsung/ariesve/prebuilt/zImage
 
-TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/usb_mass_storage/lun%d/file
+TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/file

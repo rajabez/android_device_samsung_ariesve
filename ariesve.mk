@@ -35,7 +35,8 @@ PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
     frameworks/base/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
     frameworks/base/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
-    frameworks/base/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml
+    frameworks/base/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
+    frameworks/base/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
 
 # Feature live wallpaper
 PRODUCT_COPY_FILES += \
@@ -75,10 +76,8 @@ PRODUCT_COPY_FILES += \
 
 # Modules
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilt/bthid.ko:root/lib/modules/bthid.ko \
     $(LOCAL_PATH)/prebuilt/cifs.ko:root/lib/modules/cifs.ko \
     $(LOCAL_PATH)/prebuilt/dhd.ko:root/lib/modules/dhd.ko \
-    $(LOCAL_PATH)/prebuilt/bthid.ko:system/lib/modules/bthid.ko \
     $(LOCAL_PATH)/prebuilt/cifs.ko:system/lib/modules/cifs.ko \
     $(LOCAL_PATH)/prebuilt/dhd.ko:system/lib/modules/dhd.ko
 
@@ -142,6 +141,7 @@ PRODUCT_PACKAGES += \
     setup_fs
 
 PRODUCT_PACKAGES += \
+    com.android.future.usb.accessory \
     hciconfig \
     hcitool \
     libaudioutils \

@@ -43,7 +43,14 @@
 		  <intent android:action="com.cyanogenmod.settings.device.GSensor"/>
 	    </Preference>
 	</PreferenceCategory>
-
+	<PreferenceCategory
+    	android:title="@string/category_fast_charge_title">
+	    <CheckBoxPreference 
+	        android:key="force_fast_charge"
+	        android:title="@string/force_fast_charge_head"
+	        android:summary="@string/force_fast_charge_summary_head"
+  			android:defaultValue="false" />
+	</PreferenceCategory>
 <!--
 	<PreferenceCategory
         android:title="@string/category_radio_title"

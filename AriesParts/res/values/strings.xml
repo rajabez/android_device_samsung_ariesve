@@ -50,4 +50,8 @@
     <string name="gsensor_end">Calibrated</string>
     <string name="gsensor_button1">Complete</string>
     <string name="gsensor_button2">Calibrate</string>
+	
+	<string name="category_fast_charge_title">Fast Charge Support</string>
+	<string name="force_fast_charge_head">Force Fast Charge</string>
+	<string name="force_fast_charge_summary_head">Detect USB-connected PC as USB Wall Charger, for faster charging mode</string>
 </resources>

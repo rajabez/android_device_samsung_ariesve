@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">Galaxy S Plus Beállítások</string>
 
+	<string name="category_screen_title">Screen</string>
     <string name="category_touchkey_title">Érintő Gombok</string>
     <string name="backlight_timeout_title_head">Háttérvilágítás Időtúllépése</string>
     <string name="backlight_timeout_summary_head">Állítsa be, mennyi idő után kapcsoljon ki autómatikusan a háttérvilágítás</string>

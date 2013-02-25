@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">Настройки Galaxy S Plus</string>
 
+	<string name="category_screen_title">Экран</string>
     <string name="category_touchkey_title">Сенсорные кнопки</string>
     <string name="backlight_timeout_title_head">Подсветка кнопок</string>
     <string name="backlight_timeout_summary_head">Настройте время подсветки сенсорных кнопок</string>

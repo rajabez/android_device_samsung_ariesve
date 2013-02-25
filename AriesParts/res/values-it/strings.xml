@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">Impostazioni Galaxy S Plus</string>
 	
+	<string name="category_screen_title">Display</string>
     <string name="category_touchkey_title">Tasti a sfioramento</string>
     <string name="backlight_timeout_title_head">Timer retroilluminazione</string>
     <string name="backlight_timeout_summary_head">Imposta l\'intervallo dopo cui la retroilluminazione dei tasti si spegne</string>

@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">Galaxy S Plus-instellingen</string>
 
+	<string name="category_screen_title">Scherm</string>
     <string name="category_touchkey_title">Aanraakknoppen</string>
     <string name="backlight_timeout_title_head">Time-out achtergrondverlichting</string>
     <string name="backlight_timeout_summary_head">Vertraging voor automatisch uitschakelen achtergrondverlichting aanpassen</string>

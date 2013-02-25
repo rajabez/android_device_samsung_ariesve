@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">Configurações do Galaxy S Plus</string>
 
+	<string name="category_screen_title">Tela</string>
     <string name="category_touchkey_title">Botões Touch</string>
     <string name="backlight_timeout_title_head">Tempo Limite da Iluminação</string>
     <string name="backlight_timeout_summary_head">Ajuste o tempo para desligar a iluminação dos Botões Touch</string>

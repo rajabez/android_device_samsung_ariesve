@@ -28,12 +28,19 @@
 
 static pthread_once_t g_init = PTHREAD_ONCE_INIT;
 static pthread_mutex_t g_lock = PTHREAD_MUTEX_INITIALIZER;
+static int g_haveTrackballLight = 0;
+static struct light_state_t g_notification;
+static struct light_state_t g_battery;
+static int g_backlight = 170;	//modified by mr
+static int g_trackball = -1;
+static int g_buttons = 0;
+static int g_attention = 0;
 
 #define BACKLIGHT_ON		0x1
 #define BACKLIGHT_OFF		0x2
 
 char const *const LCD_FILE = "/sys/class/leds/lcd-backlight/brightness";
-char const *const LED_FILE = "/sys/class/misc/notification/led";
+char const *const NOTIFICATION_FILE = "/sys/class/misc/backlightnotification/notification_led";
 char const *const BUTTON_FILE = "/sys/devices/virtual/misc/melfas_touchkey/brightness";
 
 static int write_int(char const *path, int value)
@@ -79,21 +86,15 @@ static int is_lit(struct light_state_t const* state)
 static int set_light_notifications(struct light_device_t* dev,
 			struct light_state_t const* state)
 {
-	int brightness =  rgb_to_brightness(state);
-	int v = 0;
-	int ret = 0;
+	int err = 0;
+	int on = is_lit(state);
+	LOGV("%s color=%08x flashMode=%d flashOnMS=%d flashOffMS=%d\n", __func__,
+		state->color, state->flashMode, state->flashOnMS, state->flashOffMS);
 	pthread_mutex_lock(&g_lock);
-
-	if (brightness+state->color == 0 || brightness > 100) {
-		if (state->color & 0x00ffffff)
-			v = 1;
-	} else
-		v = 0;
-
-	LOGI("color %u fm %u status %u is lit %u brightness", state->color, state->flashMode, v, (state->color & 0x00ffffff), brightness);
-	ret = write_int(LED_FILE, v);
+	g_buttons = on;
+	err = write_int(NOTIFICATION_FILE, on?1:0);
 	pthread_mutex_unlock(&g_lock);
-	return ret;
+	return err;
 }
 
 static int set_light_backlight(struct light_device_t *dev,
@@ -103,6 +104,7 @@ static int set_light_backlight(struct light_device_t *dev,
 	int brightness = rgb_to_brightness(state);
 
 	pthread_mutex_lock(&g_lock);
+	g_backlight = brightness;
 	err = write_int(LCD_FILE, brightness);
 
 	pthread_mutex_unlock(&g_lock);
@@ -115,6 +117,7 @@ static int set_light_buttons (struct light_device_t* dev,
 	int on = is_lit (state);
 	LOGV("%s state->color = %d is_lit = %d", __func__,state->color , on);
 	pthread_mutex_lock (&g_lock);
+	g_buttons = on;
 	if(on)
 		write_int(BUTTON_FILE, BACKLIGHT_ON);
 	else

@@ -4,11 +4,6 @@
 
 	<string name="category_screen_title">Screen</string>
     <string name="category_touchkey_title">Érintő Gombok</string>
-    <string name="backlight_timeout_title_head">Háttérvilágítás Időtúllépése</string>
-    <string name="backlight_timeout_summary_head">Állítsa be, mennyi idő után kapcsoljon ki autómatikusan a háttérvilágítás</string>
-
-	<string name="backlight_wakelock_title_head">Háttérvilágítás Aktiválása</string>
-    <string name="backlight_wakelock_summary_head">A háttérvilágítás aktiválása alvó módban (FIGYELEM ez növelnini fogja az akkumulátorhasználatot)</string>
 
     <string name="g_sensor_title">Vízszintes kalibrálás</string>
     <string name="g_sensor_summary">Vízszintes kalibrálás a gyorsulásméró segítségével</string>

@@ -14,13 +14,11 @@ import android.preference.PreferenceCategory;
 public class DeviceSettings extends PreferenceActivity  {
 
     public static final String KEY_GSENSOR = "gsensor";
-    public static final String KEY_BACKLIGHT_WAKELOCK = "backlight_wakelock";
-    public static final String KEY_BACKLIGHT_TIMEOUT = "backlight_timeout";
+    public static final String KEY_BACKLIGHT = "backlight";
     public static final String KEY_FAST_CHARGE = "force_fast_charge";
     public static final String KEY_VIBRATION = "vibration";
 
-    private ListPreference mBacklightTimeout;
-    private CheckBoxPreference mBacklightWakelock;
+    private Preference mBacklight;
     private Preference mGSensor;
 	private CheckBoxPreference mFastCharge;
     private VibrationPreference mVibration;
@@ -30,13 +28,8 @@ public class DeviceSettings extends PreferenceActivity  {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.main);
 
-        mBacklightWakelock = (CheckBoxPreference) findPreference(KEY_BACKLIGHT_WAKELOCK);
-        mBacklightWakelock.setEnabled(TouchKeyBacklightWakelock.isSupported());
-        mBacklightWakelock.setOnPreferenceChangeListener(new TouchKeyBacklightWakelock());
-
-        mBacklightTimeout = (ListPreference) findPreference(KEY_BACKLIGHT_TIMEOUT);
-        mBacklightTimeout.setEnabled(TouchKeyBacklightTimeout.isSupported());
-        mBacklightTimeout.setOnPreferenceChangeListener(new TouchKeyBacklightTimeout());
+        mBacklight = (Preference) findPreference(KEY_BACKLIGHT);
+        mBacklight.setOnPreferenceClickListener(new TouchKeyBacklight(this));
 
 		mGSensor = (Preference) findPreference(KEY_GSENSOR);
         mGSensor.setEnabled(GSensor.isSupported());

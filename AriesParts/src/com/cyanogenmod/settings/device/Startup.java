@@ -8,8 +8,6 @@ public class Startup extends BroadcastReceiver {
 
     @Override
     public void onReceive(final Context context, final Intent bootintent) {
-        TouchKeyBacklightTimeout.restore(context);
-        TouchKeyBacklightWakelock.restore(context);
         FastCharge.restore(context);
         VibrationPreference.restore(context);
     }

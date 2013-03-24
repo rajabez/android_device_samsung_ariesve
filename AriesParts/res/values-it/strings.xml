@@ -4,11 +4,8 @@
 	
 	<string name="category_screen_title">Display</string>
     <string name="category_touchkey_title">Tasti a sfioramento</string>
-    <string name="backlight_timeout_title_head">Timer retroilluminazione</string>
-    <string name="backlight_timeout_summary_head">Imposta l\'intervallo dopo cui la retroilluminazione dei tasti si spegne</string>
-
-    <string name="backlight_wakelock_title_head">Attivazione retroilluminazione</string>
-    <string name="backlight_wakelock_summary_head">Attiva la retroilluminazione in Deep Sleep (ATTENZIONE se attivata consumerà più batteria)</string>
+    <string name="backlight_title_head">Impostazioni Retroilluminazione</string>
+    <string name="backlight_summary_head">Impostazioni Notifica Retroilluminazione (applicazione esterna)</string>
 
     <string name="g_sensor_title">Calibrazione orizzontale</string>
     <string name="g_sensor_summary">Calibra il dispositivo con l’accelerometro</string>

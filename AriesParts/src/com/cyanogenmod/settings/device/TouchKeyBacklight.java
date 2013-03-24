@@ -18,6 +18,7 @@ public class TouchKeyBacklight implements OnPreferenceClickListener {
     private PreferenceActivity mContext;
 
     public static final String PACKAGE_BLN = "neldar.bln.control.free";
+    public static final String PACKAGE_BLN_PRO = "neldar.bln.control.pro";
 
     public boolean isPackageExists(String targetPackage){
         List<ApplicationInfo> packages;
@@ -30,18 +31,24 @@ public class TouchKeyBacklight implements OnPreferenceClickListener {
         return false;
     }
 
+    public void launchPackage(String targetPackage){
+        Intent i = new Intent();
+        PackageManager manager = mContext.getPackageManager();
+        i = manager.getLaunchIntentForPackage(targetPackage);
+        i.addCategory(Intent.CATEGORY_LAUNCHER);
+        mContext.startActivity(i);
+    }
+
     public TouchKeyBacklight(PreferenceActivity context) {
         mContext = context;
     }
 
     @Override
     public boolean onPreferenceClick(Preference preference) {
-	    if (isPackageExists(PACKAGE_BLN)) {
-            Intent i = new Intent();
-            PackageManager manager = mContext.getPackageManager();
-            i = manager.getLaunchIntentForPackage(PACKAGE_BLN);
-            i.addCategory(Intent.CATEGORY_LAUNCHER);
-            mContext.startActivity(i);
+        if (isPackageExists(PACKAGE_BLN_PRO)) {
+            launchPackage(PACKAGE_BLN_PRO);
+        } else if (isPackageExists(PACKAGE_BLN)) {
+            launchPackage(PACKAGE_BLN);
         } else {
             Intent intent = new Intent(Intent.ACTION_VIEW); 
             intent.setData(Uri.parse("market://details?id="+PACKAGE_BLN)); 

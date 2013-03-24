@@ -147,6 +147,7 @@ on boot
     chown system system sys/class/misc/notification/led
     chown system system sys/class/misc/notification/bl_timeout
     chown system system sys/class/misc/notification/wakelock
+    chown system system sys/class/vibetonz/immDuty/pwmvalue_intensity
 
     # for silent reset
     chown system system /proc/dump_enable

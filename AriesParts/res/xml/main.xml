@@ -35,4 +35,13 @@
 	        android:summary="@string/force_fast_charge_summary_head"
   			android:defaultValue="false" />
 	</PreferenceCategory>
+    <PreferenceCategory
+        android:title="@string/category_vibration_title">
+        <!-- Vibration -->
+        <com.cyanogenmod.settings.device.VibrationPreference
+            android:key="vibration"
+            android:title="@string/vibration_title_head"
+            android:summary="@string/vibration_summary_head" />
+     </PreferenceCategory>
+
 </PreferenceScreen>

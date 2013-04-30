@@ -111,28 +111,89 @@
          Zone N + 1:    array[N] <= LUX < infinity
 
          Must be overridden in platform specific overlays -->
-    <integer-array name="config_autoBrightnessLevels">
-        <item>30</item>
-        <item>2000</item>
-        <item>6000</item>
-        <item>11000</item>
+	<integer-array name="config_autoBrightnessLevels">
+        <item>100</item>
+        <item>200</item>
+        <item>400</item>
+        <item>670</item>
+        <item>1000</item>
+        <item>1220</item>
+        <item>1360</item>
+        <item>1480</item>
+        <item>1570</item>
+        <item>1660</item>
+        <item>1750</item>
+        <item>1840</item>
+        <item>1950</item>
     </integer-array>
 
     <!-- Array of output values for LCD backlight corresponding to the LUX values
-         in the config_autoBrightnessLevels array.  This array should have size one greater
-         than the size of the config_autoBrightnessLevels array.
-         This must be overridden in platform specific overlays -->
-    <integer-array name="config_autoBrightnessLcdBacklightValues">
+in the config_autoBrightnessLevels array. This array should have size one greater
+than the size of the config_autoBrightnessLevels array.
+This must be overridden in platform specific overlays -->
+<integer-array name="config_autoBrightnessLcdBacklightValues">
         <item>20</item>
-        <item>50</item>
+        <item>30</item>
+        <item>40</item>
+        <item>60</item>
+        <item>80</item>
         <item>100</item>
-        <item>150</item>
+        <item>120</item>
+        <item>140</item>
+        <item>160</item>
+        <item>180</item>
+        <item>200</item>
+        <item>220</item>
+        <item>240</item>
         <item>255</item>
     </integer-array>
 
+
     <!-- Flag indicating whether we should enable automatic brightness for
-         the button and keyboard backlights. -->
+the button and keyboard backlights. -->
     <bool name="config_autoBrightnessButtonKeyboard">false</bool>
+
+    <!-- Array of output values for button backlight corresponding to the LUX values
+in the config_autoBrightnessLevels array. This array should have size one greater
+than the size of the config_autoBrightnessLevels array.
+This must be overridden in platform specific overlays -->
+  <integer-array name="config_autoBrightnessButtonBacklightValues">
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+    </integer-array>
+
+    <!-- Array of output values for keyboard backlight corresponding to the LUX values
+in the config_autoBrightnessLevels array. This array should have size one greater
+than the size of the config_autoBrightnessLevels array.
+This must be overridden in platform specific overlays -->
+    <integer-array name="config_autoBrightnessKeyboardBacklightValues">
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+    </integer-array>
 
     <!-- Component name of the service providing network location support. -->
     <string name="config_networkLocationProvider">com.google.android.location.NetworkLocationProvider</string>
